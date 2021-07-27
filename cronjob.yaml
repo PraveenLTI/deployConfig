@@ -2,6 +2,7 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: javaapptest
+  namespace: sumit
 spec:
   schedule: "*/5 * * * *"       
   concurrencyPolicy: "Replace"  
