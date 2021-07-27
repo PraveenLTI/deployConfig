@@ -18,7 +18,7 @@ spec:
             parent: "cronjobpi"
         spec:
           containers:
-          - name: pi
+          - name: javaapp
             image: praveenlti/javaapp1:latest
             #command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
           restartPolicy: OnFailure 
