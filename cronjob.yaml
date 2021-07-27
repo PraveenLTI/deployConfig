@@ -1,0 +1,23 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: javaapptest
+spec:
+  schedule: "*/5 * * * *"       
+  concurrencyPolicy: "Replace"  
+  startingDeadlineSeconds: 200  
+  suspend: false                
+  successfulJobsHistoryLimit: 3 
+  failedJobsHistoryLimit: 1     
+  jobTemplate:                  
+    spec:
+      template:
+        metadata:
+          labels:               
+            parent: "cronjobpi"
+        spec:
+          containers:
+          - name: pi
+            image: image-registry.openshift-image-registry.svc:5000/sumit/pet
+            #command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+          restartPolicy: OnFailure 
